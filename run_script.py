@@ -10,7 +10,7 @@ import pandas as pd
 
 path = "E:/git/datascience_my01/chromedriver"
 
-df = gs.get_jobs (200, False, path, 15)
+df = gs.get_jobs (200, False, path, 50)
 #'data scientist' temporarily take out
 
 df.to_csv('glassdoor_jobs_1.csv', index = False)
