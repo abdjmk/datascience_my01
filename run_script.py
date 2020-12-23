@@ -8,8 +8,9 @@ Created on Tue Dec 22 03:33:45 2020
 import glassdoor_scrapper_chrome as gs
 import pandas as pd
 
-path = "C:/git/datascience_my01/chromedriver"
+path = "E:/git/datascience_my01/chromedriver"
 
-df = gs.get_jobs ('data scientist',15, False, path, 15)
+df = gs.get_jobs (200, False, path, 15)
+#'data scientist' temporarily take out
 
-
+df.to_csv('glassdoor_jobs_1.csv', index = False)

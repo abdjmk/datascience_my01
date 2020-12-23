@@ -2,7 +2,8 @@
 """
 Created on Tue Dec 22 02:49:09 2020
 
-@author: DELL
+author: Kenarapfaik
+url: https://github.com/arapfaik/scraping-glassdoor-selenium
 """
 
 from selenium.common.exceptions import NoSuchElementException, ElementClickInterceptedException
@@ -10,8 +11,8 @@ from selenium import webdriver
 import time
 import pandas as pd
 
-def get_jobs(keyword, num_jobs, verbose, path, slp_time):
-    
+def get_jobs(num_jobs, verbose, path, slp_time):
+# temp remove keyword string    
     '''Gathers jobs as a dataframe, scraped from Glassdoor'''
     
     #Initializing the webdriver
@@ -24,7 +25,8 @@ def get_jobs(keyword, num_jobs, verbose, path, slp_time):
     driver = webdriver.Chrome(executable_path= path, options=options)
     driver.set_window_size(1120, 1000)
     
-    url = "https://www.glassdoor.com/Job/jobs.htm?suggestCount=0&suggestChosen=false&clickSource=searchBtn&typedKeyword="+keyword+"&sc.keyword="+keyword+"&locT=&locId=&jobType="
+    url  = "https://www.glassdoor.com/Job/data-scientist-jobs-SRCH_KO0,14.htm?minSalary=11000&includeNoSalaryJobs=false&maxSalary=363000"
+    #url = "https://www.glassdoor.com/Job/jobs.htm?suggestCount=0&suggestChosen=false&clickSource=searchBtn&typedKeyword="+keyword+"&sc.keyword="+keyword+"&locT=&locId=&jobType="
     #url = "https://www.glassdoor.com/Job/jobs.htm?suggestCount=0&suggestChosen=false&clickSource=searchBtn&typedKeyword="%22data+scientist%22"&sc.keyword=%22data+scientist%22&locT=&locId=&jobType="
     #url = "https://www.glassdoor.com/Job/jobs.htm?suggestCount=0&suggestChosen=true&clickSource=searchBtn&typedKeyword=" +keyword + "Data+Scientist&sc.keyword=Data+Scientist&locT=N&locId=170&jobType="
     #url = 'https://www.glassdoor.com/Job/jobs.htm?sc.keyword="' + keyword + '"&locT=C&locId=1147401&locKeyword=San%20Francisco,%20CA&jobType=all&fromAge=-1&minSalary=0&includeNoSalaryJobs=true&radius=100&cityId=-1&minRating=0.0&industryId=-1&sgocId=-1&seniorityType=all&companyId=-1&employerSizes=0&applicationType=0&remoteWorkType=0'
@@ -147,7 +149,7 @@ def get_jobs(keyword, num_jobs, verbose, path, slp_time):
                     competitors = -1
 
             except NoSuchElementException:  #Rarely, some job postings do not have the "Company" tab.
-                headquarters = -1
+                #headquarters = -1
                 size = -1
                 founded = -1
                 type_of_ownership = -1
