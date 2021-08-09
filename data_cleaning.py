@@ -14,7 +14,7 @@ df = pd.read_csv('glassdoor_jobs.csv')
 
 df=df[df['Salary Estimate']!= '-1'] #This function eliminate df without salary
 salary = df['Salary Estimate'].apply(lambda x: x.split('(')[0]) #This function generate salary df
-minus_Kd = salary.apply(lambda x: x.replace('$','').replace('K','')) #This function replace $ & K with balnk space
+minus_Kd = salary.apply(lambda x: x.replace('$','').replace('K','')) #This function replace $ & K with blank space
 #minus_Kd = salary.apply(lambda x: x.replace('K','').replace('$',''))
 
 df['hourly'] = df['Salary Estimate'].apply(lambda x: 1 if 'per hour' in x.lower() else 0) #adding column for hourly replacing per hour with hourly
